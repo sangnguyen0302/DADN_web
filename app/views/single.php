@@ -79,7 +79,7 @@
                                             $url = "../controllers/script.php?single-store-product-id-user=".$value['id'];
                                         }
                                     ?>
-                                    <a class="btn btn-outline-dark" href="<?=$url?>">Thêm vào giỏ hàng</a>
+                                    <a class="btn btn-outline-dark" onCLick="sendTo('<?=$url?>')">Thêm vào giỏ hàng</a>
                             </div>
                             
                         </div>
