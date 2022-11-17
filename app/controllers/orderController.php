@@ -33,8 +33,9 @@
             $cart->clearCartUser();
 
         	//$checkInsert=$cart->insertToOrder($product_id,$userId,$productRow['name'],1,$productRow['promotionPrice']);
-        	//unset($_SESSION['cart']);
+        	unset($_SESSION['paymentMethod']);
         	header("Location: ../views/home.php");
+			//exit();
 
 		}else if($_REQUEST['action'] == 'myOrder'){
 
@@ -83,7 +84,9 @@
     		$list= $result->fetch_all(MYSQLI_ASSOC);
     		require_once "../views/order.php";
     	}else if($_REQUEST['action']=='canclePayment'){
-    		header("Location: ../views/home.php");
+        	unset($_SESSION['paymentMethod']);
+
+ 			header("Location: ../views/home.php");
     	}else if ($_REQUEST['action'] == 'rateComment' && !empty($_REQUEST['id'])) {
 			$id=$_REQUEST['id'];
             header( "Location: ../views/rateComment.php?productId=".$id );

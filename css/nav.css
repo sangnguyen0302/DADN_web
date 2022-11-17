@@ -45,6 +45,10 @@ nav {
     z-index: 1000;
 }
 
+.navbar-custom{
+    background-color: #ead8b2;
+}
+
 .j-left {
     justify-self: left;
 }

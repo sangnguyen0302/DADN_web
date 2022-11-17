@@ -48,6 +48,36 @@
 			require_once "../views/management/ProductsManagement.php";
 
 		}
+		else if ($_REQUEST['action'] == 'revenueManagement'){
+
+			// include_once '../models/rateCommentModel.php';
+
+			// $manage = new rateCommentModel();
+
+			// $sumRate= $manage->getSumRate();
+
+			// $sumComment =$manage->getSumComment();
+
+			// $list = $manage->getAll();
+			require_once "../models/productModel.php";
+
+			$product = new productModel();
+			$result = $product->getAll();
+			$productsList= $result->fetch_all(MYSQLI_ASSOC);
+			require_once '../views/management/RevenueManagement.php';
+
+		}
+		else if ($_REQUEST['action'] == 'searchingManagement'){
+
+		require_once "../models/productModel.php";
+
+		// $product = new productModel();
+		// $result = $product->getAll();
+		// $productsList= $result->fetch_all(MYSQLI_ASSOC);
+
+		require_once "../views/management/SearchingManagement.php";
+
+	}
 
 
 	}
