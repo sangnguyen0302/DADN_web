@@ -133,7 +133,16 @@ h1 {
 .empty.active {
 	display: block;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 /*.products {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
