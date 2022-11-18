@@ -1,5 +1,8 @@
 <footer class="container-fluid">
-    <div class="row pt-3">
+    <div class="row pt-4">
+      <div class="col">
+      <h1>LOGO</h1>
+      </div>
       <div class="col-lg-2 col-link">
         <h4>Liên kết</h4>
         <ul>
