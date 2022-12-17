@@ -12,7 +12,11 @@
     <link type="text/css" rel="stylesheet" href= "../../css/footer.css">
     <link type="text/css" rel="stylesheet" href= "../../css/nav.css">
     <link type="text/css" rel="stylesheet" href= "../../css/pro_cart.css">
+    <link type="text/css" rel="stylesheet" href= "../../css/chat.css">
+    <link type="text/css" rel="stylesheet" href= "../../css/admin.css">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="../routing.js"></script>
 <script src="../app.js"></script>
 <script type="text/javascript">

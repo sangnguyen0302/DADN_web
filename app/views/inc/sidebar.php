@@ -35,9 +35,10 @@
           Thống kê doanh số
         </a>
       </li>
+      
       <li class="nav-item">
-        <a href="../controllers/managementController.php?action=searchingManagement" class="nav-link text-white">
-          Tìm kiếm sản phẩm theo mã
+        <a href="../controllers/managementController.php?action=inboxManagement" class="nav-link text-white">
+          Tin nhắn
         </a>
       </li>
     </ul>

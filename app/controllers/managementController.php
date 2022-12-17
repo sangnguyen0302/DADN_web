@@ -29,13 +29,22 @@
 
 			require_once '../views/management/rateComManagement.php';
 
-		}else if ($_REQUEST['action'] == 'manageCustomerContacted'){
+		}else if ($_REQUEST['action'] == 'inboxManagement'){
+			include_once '../models/chatModel.php';
+			$chat = new ChatModel();
+			$row = $chat->getAdmininfor();
+
+			require_once '../views/management/inboxManagement.php';
 
 
 
 		}else if ($_REQUEST['action'] == 'manageExceptionInfors'){
 
 
+
+		}else if ($_REQUEST['action'] == 'detailInboxMang'){
+			$user_id = $_GET['user_id'];
+			require_once '../views/management/detailInboxManagement.php';
 
 		}else if ($_REQUEST['action'] == 'manageProducts'){
 

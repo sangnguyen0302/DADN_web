@@ -80,7 +80,19 @@ CREATE TABLE `order_details` (
 ) ;
 
 -- --------------------------------------------------------
+--
+-- Cấu trúc bảng cho bảng `messages`
+--
 
+CREATE TABLE `messages` (
+  `msg_id` int(11) NOT NULL,
+  `incoming_msg_id` int(255) NOT NULL,
+  `outgoing_msg_id` int(255) NOT NULL,
+  `msg` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- --------------------------------------------------------
 --
 -- Cấu trúc bảng cho bảng `products`
 --
@@ -133,7 +145,7 @@ CREATE TABLE `users` (
   `image` varchar(50)
 ) ;
 
-
+-- ---------
 --
 -- Chỉ mục cho các bảng đã đổ
 --
@@ -162,7 +174,7 @@ ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`userId`);
 
---
+
 -- Chỉ mục cho bảng `order_details`
 --
 ALTER TABLE `order_details`
@@ -206,6 +218,20 @@ ALTER TABLE `users`
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5000;
 
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`msg_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT;
+
+
 --
 -- AUTO_INCREMENT cho bảng `orders`
 --
@@ -246,13 +272,10 @@ ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
 
 INSERT INTO `users` (`id`, `fullName`, `email`, `dob`, `address`, `password`, `roleId`, `status`, `isConfirmed`, `phone`, `image`) VALUES
-('1000', 'Thanh Sang', 'admin@gmail.com', '2022-06-12', '276/1, Đường Tỉnh Lộ 827B', 'sang123', 1, 1, 1, '0365840620', 'ic.jpg');
+('1000', 'BKTOYS', 'admin@gmail.com', '2022-06-12', '276/1, Đường Tỉnh Lộ 827B', 'sang123', 1, 1, 1, '0365840620', 'ic.jpg');
 
 INSERT INTO `users` (`id`, `fullName`, `email`, `dob`, `address`, `password`, `roleId`, `status`, `isConfirmed`, `phone`,`image`) VALUES
-('1001', 'Nguyễn Tuấn Vinh', 'nguyentuanvinh1222@gmail.com', '2022-06-12', '276/1, Đường Tỉnh Lộ 827B', '123456', 1, 1, 1, '0793191854','');
-
-INSERT INTO `users` (`id`, `fullName`, `email`, `dob`, `address`, `password`, `roleId`, `status`, `isConfirmed`, `phone`,`image`) VALUES
-('1002', 'Thanh Sang', 'sang@gmail.com', '2022-06-13', '276/1, Đường Tỉnh Lộ 827B', 'sang123', 2, 1, 1, '0345667789','');
+('1002', 'Thanh Sang', 'sang@gmail.com', '2022-06-13', '276/1, Đường Tỉnh Lộ 827B', 'sang123', 2, 1, 1, '0345667789','avag5.png');
 
 
 --
