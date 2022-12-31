@@ -15,7 +15,10 @@ require_once '../DB.php';
   });
   </script>
   <div class="chat_wrapper">
-  <div  class="chat_fb"> <i class="far fa-comments fa-5x"></i></div>
+  <?php
+  if (isset($_SESSION['user_id']))
+   echo '<div  class="chat_fb"> <i class="far fa-comments fa-5x"></i></div>'
+  ?>
   <div class="fchat">
   <div class="wrapper">
     <section class="chat-area">
