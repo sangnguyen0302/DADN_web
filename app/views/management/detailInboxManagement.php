@@ -28,7 +28,7 @@ require_once '../models/chatModel.php';
             $user_id = '1000';
             ?>
             <img  src="../../image/<?php echo $row['image']; ?>" width="40px" height ="40px" margin ="0 15px" alt="">
-            <div class="details">
+            <div class="details" >
             <span><?php echo $row['fullName'] ?></span>
             <p><?php if ($row['status'] == 1) echo "Đang hoạt động"; else echo "Đang ngoại tuyến" ; ?></p>
             </div>

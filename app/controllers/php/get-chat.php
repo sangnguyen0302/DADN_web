@@ -1,12 +1,8 @@
 <?php 
     session_start();
-    if(isset($_SESSION['user_id'])||isset($_SESSION['admin_id'])){
+    if(isset($_SESSION['user_id'])){
         include_once "config.php";
-        if(isset($_SESSION['user_id'])){
-            $outgoing_id = $_SESSION['user_id'];
-        }else {
-            $outgoing_id = $_SESSION['admin_id'];
-        }
+        $outgoing_id = $_SESSION['user_id'];
         $incoming_id = mysqli_real_escape_string($conn, $_POST['incoming_id']);
         $output = "";
         $sql = "SELECT * FROM messages LEFT JOIN users ON users.id = messages.outgoing_msg_id
@@ -35,7 +31,7 @@
         }
         echo $output;
     }else{
-        header("location: ../login.php");
+        header("location: ../views/login.php");
     }
 
 ?>

@@ -1,4 +1,5 @@
-<?php require_once '../models/chatModel.php';
+<?php 
+require_once '../models/chatModel.php';
 require_once '../DB.php';
 ?>
  <script>
@@ -14,7 +15,7 @@ require_once '../DB.php';
   });
   </script>
   <div class="chat_wrapper">
-  <div  class="chat_fb"> <kbd>Hỗ trợ trực tuyến</kbd></div>
+  <div  class="chat_fb"> <i class="far fa-comments fa-5x"></i></div>
   <div class="fchat">
   <div class="wrapper">
     <section class="chat-area">

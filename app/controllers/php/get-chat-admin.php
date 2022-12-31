@@ -2,7 +2,7 @@
     session_start();
     if(isset($_SESSION['admin_id'])){
         include_once "config.php";
-        $outgoing_id = $_SESSION['admin_id'];
+        $outgoing_id = '1000';
         $incoming_id = mysqli_real_escape_string($conn, $_POST['incoming_id']);
         $output = "";
         $sql = "SELECT * FROM messages LEFT JOIN users ON users.id = messages.outgoing_msg_id

@@ -14,8 +14,8 @@ session_start();
 </head>
 <body>
 	<?php require_once '../views/inc/sidebar.php' ?>
-	<main style="margin-left: 220px" class="p-3">
-    <div class="wrapper">
+  <div class="d-flex flex-column p-9 text-black bg-secondary" style=" position: fixed; height:100%; top:0; left:220px; width: 85%">
+    <div class="chat-users-admin">
     <section class="users">
       <header>
         <div class="content">
@@ -39,9 +39,8 @@ session_start();
     </section>
   </div>
 
+ 
+  </div>
   <script src="../../javascript/users.js"></script>
-
-	</main>
-
 </body>
 </html>
