@@ -4,12 +4,78 @@
     require_once("../DB.php");
  ?>
  <style>
-	a {
-		text-decoration : none;
-	}
-	a:hover {
-		text-decoration : underline;
-	}
+a {
+	text-decoration : none;
+}
+a:hover {
+	text-decoration : underline;
+}
+
+.button {
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: #212121;
+    font-size: 15px;
+    font-weight: 300;
+    margin: 0 15px;
+    transition: 0.4s;
+}
+
+.btn-change {
+    color: #FFF;
+    background-color: #68A0DE;
+    box-shadow: inset 0 -8px 0 0 rgba(0, 0, 0, 0.2);
+    transition: 0.1s;
+    text-shadow: 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.btn-change:hover {
+    box-shadow: inset 0 -6px 0 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-change:active {
+    box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-update {
+    position: relative;
+}
+
+.btn-update:after, .btn-update:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    transition: all 0.4s, opacity 0.1s 0.4s;
+    opacity: 0;
+}
+
+.btn-update:after {
+    bottom: 0;
+    right: 0;
+    border-bottom: 3px solid #212121;
+    border-right: 3px solid #212121;
+}
+
+.btn-update:before {
+    top: 0;
+    left: 0;
+    border-left: 3px solid #212121;
+    border-top: 3px solid #212121;
+}
+
+.btn-update:hover:after, .btn-update:hover:before {
+    width: 100%;
+    height: 100%;
+    transition: 0.4s; opacity: 0.1s;
+    opacity: 1;
+}
 </style>
 <title>Thông tin tài khoản</title>
 <link type="text/css" rel="stylesheet" href= "../../css/profile.css">
@@ -67,7 +133,7 @@
                         <!--p class="card-text">Mã số tài khoản: <,?php echo $value['id'];?></p-->
                             <div class="mb-3 address">
                                 <label for="" class="input-label"></label>
-                                <button class="btn btn-primary" type="submit" name="change-avt">Lưu thay đổi</button>
+                                <button class="button btn-change" type="submit" name="change-avt">Lưu thay đổi</button>
                             </div>
                             
                         </form>
@@ -87,7 +153,7 @@
                                         <input type="hidden" name="user-id-phone" value="<?=$user_id?>">
                                     </div>
                                     <div class="text-end flex-fill">
-                                        <input type="submit" class="btn btn-outline-primary" name="change-phone-user" value="Cập nhật">
+                                    <button type="submit" class="button btn-update" name="change-phone-user">Cập nhật</button>
                                     </div>
                                 </div>
                                 <?php 
@@ -109,7 +175,7 @@
                                         <input type="hidden" name="user-id-email" value="<?=$user_id?>">
                                     </div>
                                     <div class="text-end flex-fill">
-                                        <button type="submit" class="btn btn-outline-primary" name="change-email-user">Cập nhật</button>
+                                        <button type="submit" class="button btn-update" name="change-email-user">Cập nhật</button>
                                     </div>
                                 </div>
                                 <?php 
@@ -185,7 +251,7 @@
                                                 <label for="">Nhập lại mật khẩu mới :</label>
                                                 <input class="form-control" type="password" name="confirm-pass" placeholder="Nhập lại mật khẩu mới" required>
                                             </div>
-                                            <input class="btn btn-primary" type="submit" name="submit-change-pass" value="Xác nhận">
+                                            <input class="button btn-change" type="submit" name="submit-change-pass" value="Xác nhận">
                                         </form>
                                     </div> 
                                 </div>
@@ -218,7 +284,7 @@
 			                        </select>
                                     </div>
                                     <div class="text-end flex-fill">
-                                        <button type="submit" class="btn btn-outline-primary">Cập nhật</button>
+                                        <button type="submit" class="button btn-update">Cập nhật</button>
                                     </div>
                                 </div>
                                 </form>

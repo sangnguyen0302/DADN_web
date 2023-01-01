@@ -36,6 +36,7 @@ class CartModel
             if(!in_array($this->product['id'],$ids)){ 
                 $_SESSION['cart'][]=$this->product;
             }
+         
         }
         /*highlight_string("<?php". var_export($_SESSION['cart'], true).";?>");*/
     }
@@ -56,8 +57,16 @@ class CartModel
                 $_SESSION['cart'][$key]['status']= $quant;
             }
         }    
-        
     }
+
+    public function getQuantity(){
+        foreach($_SESSION['cart'] as $key => $value){
+            if($value['id']==$this->product['id']){
+                return $_SESSION['cart'][$key]['status'];
+            }
+        }    
+    }
+
 
     public static function getNumberCart()
     {
@@ -117,6 +126,13 @@ class CartModel
     public function updateQuantityUser($quant){
         $db = DB::getInstance();
         $sql= "UPDATE cart SET quanty=".$quant." WHERE userId=".$this->id." AND productId=".$this->productId;
+        mysqli_query($db->con, $sql);
+        mysqli_error($db->con);
+    }
+
+    public function getQuantityUser(){
+        $db = DB::getInstance();
+        $sql= "SELECT quanty=".$quant." FROM cart WHERE userId=".$this->id." AND productId=".$this->productId;
         mysqli_query($db->con, $sql);
         mysqli_error($db->con);
     }

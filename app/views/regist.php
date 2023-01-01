@@ -1,5 +1,13 @@
 
-<?php  require_once 'inc/head.php'; ?> 
+<?php
+    session_start();
+    
+    if (isset($_SESSION['user_id'])) {
+      header("Location: home.php");
+    }
+?>
+<?php  require_once('inc/head.php'); ?> 
+<title>Đăng ký</title>
 <?php  require '../models/loginModel.php'; ?>
 <?php
 if(isset($_POST['RegisterAction']) && $_POST['RegisterAction']=="Đăng ký"){
@@ -38,12 +46,7 @@ if(isset($_POST['RegisterAction']) && $_POST['RegisterAction']=="Đăng ký"){
     
 }
 ?>
-<title>Đăng ký</title>
-</head>
-<body>
-    <?php require 'inc/nav.php'; ?>
-    
-<?php  require_once  'inc/head.php'; ?> 
+<?php  require_once('inc/head.php'); ?> 
 <title>Đăng ký</title>
 </head>
 <body>

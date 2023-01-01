@@ -1,5 +1,40 @@
 <?php require_once 'inc/head.php'; ?>
 	<title>Nhận xét và đánh giá</title>
+<style>
+.button {
+    text-decoration: none;
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: #212121;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 15px;
+}
+
+.btn-send {
+    background: linear-gradient(-45deg, DodgerBlue, DeepSkyBlue, Blue);
+}
+
+.btn-send:hover {
+	color: black;
+    background: linear-gradient(45deg, DodgerBlue, DeepSkyBlue, Blue );
+}
+
+.btn-return {
+    background: linear-gradient(-45deg, #A9A9A9, #F0FFFF, #A9A9A9);
+}
+
+.btn-return:hover {
+	color: black;
+    background: linear-gradient(45deg, #A9A9A9, #F0FFFF, #A9A9A9 );
+}
+
+</style>
 </head>
 <body>
     <div class="container my-5 py-5">
@@ -64,10 +99,10 @@
       	            
                     <div class="row">
                         <div class="col-6 d-flex">
-                            <a class="btn btn-secondary btn-lg flex-fill" href="../controllers/orderController.php?action=myOrder">Quay lại</a>
+                            <a class="button btn-return" href="../controllers/orderController.php?action=myOrder">Quay lại</a>
                         </div>
                         <div class="col-6 d-flex">
-                            <input class="btn btn-primary btn-lg flex-fill" type="submit" name="Rate" value="Gửi nhận xét">
+                            <input class="button btn-send" type="submit" name="Rate" value="Gửi nhận xét">
                         </div>
                     </div>
 	            </form>

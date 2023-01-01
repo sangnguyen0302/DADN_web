@@ -30,6 +30,17 @@
           Thành viên
         </a>
       </li>
+      <li class="nav-item">
+        <a href="../controllers/managementController.php?action=revenueManagement" class="nav-link text-white">
+          Thống kê doanh số
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="../controllers/managementController.php?action=inboxManagement" class="nav-link text-white">
+          Tin nhắn
+        </a>
+      </li>
     </ul>
     <hr>
     <a href="../views/logout.php" class="btn btn-danger">Đăng xuất</a>

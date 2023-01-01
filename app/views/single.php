@@ -11,7 +11,6 @@
     $value=$result->fetch_assoc();
 ?>
 <title><?= $value['name'] ?></title>
-<script src="../../javascript/pmbtnp.js"></script>
 <link type="text/css" rel="stylesheet" href= "../../css/single.css">
 </head>
 <body>
@@ -45,7 +44,7 @@
                         <div class="product-price bg-light py-2 px-3">
                             <span class="h2 text-danger"><?php echo number_format($value['originalPrice'])?> VNĐ</span>
                         </div>
-                        <form>
+                        <form onSubmit="return false">
                         <div class="add-to-cart py-5">
                             <div class="qty-modify">
                                 <p>Số lượng</p>
@@ -53,15 +52,15 @@
                                 <div class="input-group qty-button-group">
                                 <span class="input-group-btn">
                                
-                                <button name="quantity-update" class="btn btn-number btn-outline-light border border-1 text-dark" data-type="minus" data-field="a">
+                                <button name="quantity-update" class="btn btn-number btn-outline-light border border-1 text-dark" data-type="minus" data-field="a" onclick="document.getElementById('a').stepDown()">
                                     <i class="fa-solid fa-minus"></i>
                                 </button>
                                 </span>
                         
-                                <input type="text" name="quantity" id="a" class="form-control input-number" value="1" min="1" max="5">
+                                <input type="number" name="quantity" id="a" class="form-control input-number" value="1" min="1" max="5">
 
                                 <span class="input-group-btn">
-                                <button name="quantity-update" class="btn btn-number btn-outline-light border border-1 text-dark" data-type="plus" data-field="a">
+                                <button name="quantity-update" class="btn btn-number btn-outline-light border border-1 text-dark" data-type="plus" data-field="a" onclick="document.getElementById('a').stepUp()">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
                                 
@@ -79,7 +78,7 @@
                                             $url = "../controllers/script.php?single-store-product-id-user=".$value['id'];
                                         }
                                     ?>
-                                    <a class="btn btn-outline-dark" href="<?=$url?>">Thêm vào giỏ hàng</a>
+                                    <a class="btn-add btn-buy" onclick="return sendTo('<?=$url?>'+`&quantity=${document.getElementById('a').value}`)">Thêm vào giỏ hàng</a>
                             </div>
                             
                         </div>

@@ -39,6 +39,10 @@ if(isset($_POST['LoginAction'])){
 
 ?>
 
+<style>
+
+</style>
+
 </head>
 <body>
 
