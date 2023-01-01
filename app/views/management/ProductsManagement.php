@@ -10,6 +10,7 @@
 	}
 </style>
 <title>Quản trị sản phẩm</title>
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 </head>
 <body>
 
@@ -19,13 +20,21 @@
   <div class="container-fluid my-5 bg-light py-3">
 	<h4>Danh sách sản phẩm</h4>
 	<div class="table-responsive-lg">
-	<table class="table table-hover">
+	<div class="input-group">
+            <input type='text' id='search' class="form-control search-form" placeholder="Tìm theo mã sản phẩm">
+            <span class="input-group-btn" style="width:39px">
+              <button id="search-this"type="button" class="pull-right btn btn-default search-btn">
+                  <i class="fa fa-search"></i>
+              </button>
+            </span>
+          </div>
+	<table class="table table-hover" id = "table">
 		<?php 
 			$count=0;
 		?>
 		<thead class="text-center align-middle">
 		<tr>
-			<td>STT</td>
+			<td>Mã sản phẩm</td>
 			<!--td>Id</td-->
 			<td>Tên sản phẩm</td>
 			<td>Giá gốc</td>
@@ -42,7 +51,10 @@
 
 		<tbody class="text-center align-middle">
 		<?php 
+			$result = $product->searchKey("");
+			$productsList= $result->fetch_all(MYSQLI_ASSOC);
 			foreach ($productsList as $key => $value) {
+				
         ?>
 		<tr>
 			
@@ -73,11 +85,23 @@
 
 	</table>
 	</div>
-
+	
 	<div class="text-end">
 	<a class="btn btn-primary text-decoration-none" href="../controllers/productMnController.php?action=add">Thêm sản phẩm</a>
   </main>
-	
+<script type="text/javascript"> 
+var $rows = $('#table tr');
+			$('#search').keyup(function() {
+			var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+			
+			$rows.show().filter(function() {
+				//var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+				var text = ($(this)[0].getElementsByTagName("td")[0].innerText).replace(/\s+/g, ' ').toLowerCase(); 
+				if (text == "mã sản phẩm") return !true;
+				else return !~text.indexOf(val);
+			}).hide();
+		});
+</script>	
 
 	
 </body>

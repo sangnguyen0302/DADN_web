@@ -5,6 +5,54 @@
 	$user= $db->getInstance();
 ?>
 <title>Đơn hàng của tôi</title>
+
+<style>
+.button {
+	display: inline-block;
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+	text-decoration: none;
+
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: #212121;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 15px;
+    transition: 0.4s;
+}
+
+.btn-evaluate {
+	color: black;
+	border: 3px solid #68DEA0;
+	background-image: linear-gradient(to top, transparent 50%, #68DEA0 50%);
+	background-size: 100% 200%;
+	background-position: 0% 100%; 
+}
+
+.btn-evaluate:hover {
+	color: #FFF;
+	background-position: 0% 0%;
+}
+
+.btn-next {
+	color: black;
+	border: 3px solid #FFCE00;
+	background-image: linear-gradient(to right, transparent 50%, #FFCE00 50% );
+	background-size: 200%;
+	background-position: 0%;
+}
+
+.btn-next:hover {
+	color: #FFF;
+	background-position: 100%;
+}
+
+</style>
+
 </head>
 <body>
 	<?php require_once '../views/inc/nav.php' ?>
@@ -62,7 +110,7 @@
                                     if(empty($value2['comment'])){
 										$productId=$prod['id'];
 									?>
-										<a class="btn btn-outline-primary" href="../controllers/orderController.php?action=rateComment&id=<?=$productId?>">Viết nhận xét và đánh giá</a>
+										<a class="button btn-evaluate" href="../controllers/orderController.php?action=rateComment&id=<?=$productId?>">Viết nhận xét và đánh giá</a>
 									<?php 
 									}
 									?>
@@ -97,7 +145,7 @@
         		?>
 	
 				 <div class="text-end">
-				 <a class="btn btn-warning" href="../views/home.php">Tiếp tục mua hàng</a>
+				 <a class="button btn-next" href="../views/home.php">Tiếp tục mua hàng</a>
 				 </div>
 				
 	
@@ -107,7 +155,7 @@
 				<div class="text-center">
 					<img src="../../image/mascot2x.png" alt="..">
 					<h6>Bạn không có đơn hàng nào</h6>
-					<a class="btn btn-warning"href="../views/home.php">Đi mua sắm</a>
+					<a class="button btn-next"href="../views/home.php">Đi mua sắm</a>
 				</div>
 	<?php
 		}

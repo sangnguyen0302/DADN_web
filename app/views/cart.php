@@ -4,8 +4,61 @@
     require_once '../DB.php';
     require_once  '../views/inc/head.php';
 ?>
-<script src="../../javascript/pmbtn.js"></script>
 <title>Giỏ hàng</title>
+
+<style>
+.button {
+    text-decoration: none;
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: #212121;
+    font-size: 15px;
+    font-weight: 300;
+    margin: 0 15px;
+}
+
+.btn-pay {
+    background: linear-gradient(-45deg, red, orange, yellow);
+}
+
+.btn-pay:hover {
+    background: linear-gradient(45deg, red, orange, yellow );
+}
+
+.btn-clear {
+    transition: 0.4s;
+	color: black;
+	border: 2px solid red;
+	background-image: linear-gradient(to top, transparent 50%, red 50%);
+	background-size: 100% 200%;
+	background-position: 0% 100%; 
+}
+
+.btn-clear:hover {
+	color: #FFF;
+	background-position: 0% 0%;
+}
+
+.btn-back {
+    transition: 0.4s;
+	color: black;
+	border: 3px solid #1E90FF;
+	background-image: linear-gradient(to right, transparent 50%, #1E90FF 50% );
+	background-size: 200%;
+	background-position: 0%;
+}
+
+.btn-back:hover {
+	color: #FFF;
+	background-position: 100%;
+}
+</style>
+
 </head>
 <body>
 
@@ -41,18 +94,18 @@
 				    <td><img src="<?php echo "../../image/".$value['image']?>" width="100px" height="100px"></td>
 				    <td><?php echo $value['name']?></td>
 				    <td>
-                    <form action="../controllers/script.php" method="get">
+                    <form  onSubmit="return sendTo('../controllers/script.php?quantity-update=1&'+$(this).serialize())" method="get">
                         <div class="input-group">
                             <span class="input-group-btn">
-                            <button type="submit" name="quantity-update" class="btn btn-number" data-type="minus" data-field="<?= $value['id']?>">
+                            <button type="submit" name="quantity-update" class="btn btn-number" data-type="minus" data-field="<?= $value['id']?>" onclick = "document.getElementById('<?= $value['id']?>').stepDown()">
                             <i class="fa-solid fa-minus"></i>
                             </button>
                             </span>
                         
-                            <input type="text" name="quantity" id="<?= $value['id']?>" class="form-control input-number" value="<?php echo $value['status']?>" min="1" max="5" style="width:10px">
+                            <input type="number" name="quantity" id="<?= $value['id']?>" class="form-control input-number" value=<?php echo $value['status']?> min=1 max=5 style="width:10px">
 
                             <span class="input-group-btn">
-                            <button type="submit" name="quantity-update" class="btn btn-number" data-type="plus" data-field="<?= $value['id']?>">
+                            <button name="quantity-update" class="btn btn-number" data-type="plus" data-field="<?= $value['id']?>" onclick = "document.getElementById('<?= $value['id']?>').stepUp()">
                             <i class="fa-solid fa-plus"></i>
                             </button>
                             </span>
@@ -63,7 +116,7 @@
                     </td>
 				    <td><?php echo number_format($value['originalPrice'])."VND"?></td>
 				    <td><?php echo number_format($value['originalPrice']*$value['status'])?></td>
-				    <td><a class="text-danger" href="../controllers/script.php?remove-product-id=<?php echo $value['id'];?>"><i class="fa-solid fa-trash-can"></i></a></td>
+				    <td><a class="text-danger" onclick="sendTo('../controllers/script.php?remove-product-id=<?php echo $value['id'];?>')"><i class="fa-solid fa-trash-can"></i></a></td>
                 </tr>
                 <?php
                 }
@@ -84,7 +137,7 @@
 			</tr>
 
 			<tr> <!-- The clear cart button -->
-				<td colspan="6"> <a href="../controllers/script.php?clear-cart" class="btn btn-danger">Dọn dẹp giỏ hàng</a> </td>
+				<td colspan="6"> <a onclick="sendTo('../controllers/script.php?clear-cart')" class="button btn-clear">Dọn dẹp giỏ hàng</a> </td>
 			</tr>
             </tbody>
         </table>
@@ -94,7 +147,7 @@
          <div class="container-fluid text-center">
             <img src="https://www.english-learning.net/wp-content/uploads/2019/04/sorry-min.png" alt="Sorry" width="300px" heigt="300px" class="m-3">
             <h5>Giỏ hàng đang trống</h5>
-            <a href="home.php" class="btn btn-dark">Quay lại</a>
+            <a href="javascript:App.navigateTo('home.php')" class="button btn-back">Quay lại</a>
          </div>
     <?php } ?>
     <?php
@@ -128,18 +181,18 @@
 				        <td><img src="<?php echo "../../image/".$value['image']?>" width="100px" height="100px"></td>
 				        <td><?php echo $value['name']?></td>
 				        <td>
-                        <form action="../controllers/script.php" method="get">
+                        <form  onSubmit="return sendTo('../controllers/script.php?quantity-update-user=1&'+$(this).serialize())" method="get" >
                             <div class="input-group">
                                 <span class="input-group-btn">
-                                <button type="submit" name="quantity-update-user" class="btn btn-number" data-type="minus" data-field="<?= $value['id']?>">
+                                <button type="submit" name="quantity-update-user" class="btn btn-number" data-type="minus" data-field="<?= $value['id']?>" onclick = "document.getElementById('<?= $value['id']?>').stepDown()">
                                     <i class="fa-solid fa-minus"></i>
                                 </button>
                                 </span>
                         
-                                <input type="text" name="quantity-user" id="<?= $value['id']?>" class="form-control input-number" value="<?=$value['quanty']?>" min="1" max="5" style="width:10px">
+                                <input type="number" name="quantity-user" id="<?= $value['id']?>" class="form-control input-number" value="<?=$value['quanty']?>" min="1" max="5" style="width:10px">
 
                                 <span class="input-group-btn">
-                                <button type="submit" name="quantity-update-user" class="btn btn-number" data-type="plus" data-field="<?= $value['id']?>">
+                                <button type="submit" name="quantity-update-user" class="btn btn-number" data-type="plus" data-field="<?= $value['id']?>" onclick = "document.getElementById('<?= $value['id']?>').stepUp()">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
                                 </span>
@@ -150,7 +203,7 @@
                         </td>
 				        <td><?php echo number_format($value['originalPrice'])."VND"?></td>
 				        <td><?php echo number_format($value['originalPrice']*$value['quanty'])."VND"?></td>
-                        <td><a class="text-danger" href="../controllers/script.php?remove-product-id-user=<?php echo $value['id'];?>"><i class="fa-solid fa-trash-can"></i></a></td>
+                        <td><a class="text-danger" onclick="sendTo('../controllers/script.php?remove-product-id-user=<?php echo $value['id'];?>')"><i class="fa-solid fa-trash-can"></i></a></td>
                     </tr>
 
                         <?php
@@ -168,7 +221,7 @@
 			        </tr>
 
 			        <tr> <!-- The clear cart button -->
-				        <td colspan="6"> <a href="../controllers/script.php?clear-cart-user" class="btn btn-danger">Dọn dẹp giỏ hàng</a> </td>
+				        <td colspan="6"> <a href="../controllers/script.php?clear-cart-user" class="button btn-clear">Dọn dẹp giỏ hàng</a> </td>
 			        </tr>
                     </tbody>
                 </table>
@@ -190,7 +243,7 @@
 
                     <div class="row">
                         <span class="d-block pb-2 fs-5">Chọn hình thức thanh toán: </span> 
-                        <form action = "../controllers/paymentController.php" method="post">
+                        <form  action="../controllers/paymentController.php" method="post">
                             <div class="mb-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" checked name="paymentMethod" id="radio1" value="Payment_on_deliver">
@@ -208,7 +261,7 @@
                             </div>
 
                             <div class="d-flex flex-column">
-                                <input class="btn btn-warning" type="submit" name="paymentAction" value="Payment">
+                                <input class="button btn-pay" type="submit" name="paymentAction" value="Payment">
                             </div>
                         </form>
                     </div>
@@ -227,7 +280,7 @@
          <div class="container-fluid text-center">
             <img src="https://www.english-learning.net/wp-content/uploads/2019/04/sorry-min.png" alt="Sorry" width="300px" heigt="300px" class="m-3">
             <h5>Giỏ hàng đang trống</h5>
-            <a href="home.php" class="btn btn-dark">Quay lại</a>
+            <a href="home.php" class="button btn-back">Quay lại</a>
          </div>
     <?php } 
     }
@@ -243,6 +296,6 @@
 
 </div>
     <?php require_once 'inc/footer.php'; ?>
-    
+ 
 </body>
 </html>
